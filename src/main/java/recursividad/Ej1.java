@@ -22,8 +22,7 @@ public class Ej1 {
     public static void mostrarValoresRecursivos(int[] array, int posicion) {
         if (posicion < array.length) {
             System.out.print("[" + array[posicion] + "]" + " ");
-            posicion++;
-            mostrarValoresRecursivos(array, posicion);
+            mostrarValoresRecursivos(array, ++posicion);
         } else {
             System.out.println("\nSe ha excedido el array");
         }
