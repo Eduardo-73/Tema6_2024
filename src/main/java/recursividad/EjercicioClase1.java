@@ -21,6 +21,9 @@ public class EjercicioClase1 {
         System.out.println(contarNumero(lista));
         System.out.println("----------------");
         System.out.println(listaSinDuplicados(lista));
+        System.out.println("----------------");
+        System.out.println("El número se ha encontrado en la posición: "
+                + buscarElemento(lista, 3, 0));
 
     }
 
@@ -44,11 +47,14 @@ public class EjercicioClase1 {
         return lista;
     }
 
-    public static int buscarElemento(int[] array, int buscar) {
-        int numero = 0;
-        for (int i = 0; i < array.length; i++) {
-            
+    public static int buscarElemento(int[] array, int buscar, int posicion) {
+        if (posicion < array.length) {
+            if (buscar == array[posicion]) {
+                return posicion;
+            } else {
+                return buscarElemento(array, buscar, ++posicion);
+            }
         }
-        return numero;
+        return -1;
     }
 }
