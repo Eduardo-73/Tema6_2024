@@ -17,22 +17,21 @@ public class PalindromoRecursivo {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Escribe una palabra: ");
         String palabra = teclado.nextLine();
-        int longitud = palabra.length();
         int posicion = palabra.length() - 1;
-        boolean kapikua = comprabarPalindromoRecursivo(palabra, longitud, posicion);
+        boolean kapikua = comprabarPalindromoRecursivo(palabra, 0, posicion);
         System.out.println("Es un Palíndromo:? " + kapikua);
 
     }
 
-    public static boolean comprabarPalindromoRecursivo(String palabra, int longitud1, int longitud2) {
+    public static boolean comprabarPalindromoRecursivo(String palabra,
+            int inicio, int fin) {
         boolean palindromo = false;
-        if (longitud1 < palabra.length()) {
-            if (palabra.charAt(longitud1) == palabra.charAt(longitud2 - 1 - longitud1)
-                    || longitud1 > longitud2) {
-                palindromo = true;
-                return comprabarPalindromoRecursivo(palabra, ++longitud1, --longitud2);
-            }
+        if (inicio >= fin) {
+            return palindromo = true;
         }
-        return palindromo;
+        if (palabra.charAt(inicio) != palabra.charAt(fin)) {
+            return palindromo;
+        }
+        return comprabarPalindromoRecursivo(palabra, ++inicio, --fin);
     }
 }
