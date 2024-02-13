@@ -26,9 +26,21 @@ public class Camarero extends Trabajador{
     }
 
     // Se omite getRango y setRango
+    
     @Override
     // Método sobrescrito
     public void cotizar() {
         System.out.println("Cotizando como Camarero");
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nombre = ").append(this.getNombre());
+        sb.append(", Rango = ").append(rango);
+        return sb.toString();
+    }
+    
+    
 }
+

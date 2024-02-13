@@ -2,29 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Ej7;
+package Ej12;
 
 /**
  *
  * @author edu
  */
-public abstract class Trabajador {
+public class Persona {
 
     private String nombre;
-    private String apellido1;
+    private String apellidos;
     private String NIF;
 
-    public Trabajador(String nombre, String apellido1, String NIF) {
+    public Persona(String nombre, String apellidos, String NIF) {
         this.nombre = nombre;
-        this.apellido1 = apellido1;
+        this.apellidos = apellidos;
         this.NIF = NIF;
     }
-    
-    public Trabajador(){
-        
-    }
-    
-    public abstract void cotizar();
 
     public String getNombre() {
         return nombre;
@@ -34,12 +28,12 @@ public abstract class Trabajador {
         this.nombre = nombre;
     }
 
-    public String getApellido1() {
-        return apellido1;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getNIF() {
@@ -53,11 +47,9 @@ public abstract class Trabajador {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Trabajador{");
         sb.append("Nombre = ").append(nombre);
-        sb.append(", Apellido = ").append(apellido1);
+        sb.append(", Apellidos = ").append(apellidos);
         sb.append(", NIF = ").append(NIF);
-        sb.append('}');
         return sb.toString();
     }
 
