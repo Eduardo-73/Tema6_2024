@@ -14,13 +14,6 @@ public abstract class Cuenta {
 
     private static Random rd = new Random();
 
-    public static Random getRd() {
-        return rd;
-    }
-
-    public static void setRd(Random aRd) {
-        rd = aRd;
-    }
     private final String numeroCuenta;
     private double saldo;
     private Persona cliente;

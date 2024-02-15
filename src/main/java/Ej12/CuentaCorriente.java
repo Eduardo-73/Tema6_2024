@@ -39,7 +39,8 @@ public class CuentaCorriente extends Cuenta {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Nombre Cliente").append(this.getCliente().getNombre());
-        sb.append("Interes = ").append(interes);
+        sb.append(", Saldo = ").append(this.getSaldo());
+        sb.append(", Interes = ").append(interes);
         sb.append(", Saldo Minimo = ").append(saldoMin);
         return sb.toString();
     }
@@ -54,9 +55,9 @@ public class CuentaCorriente extends Cuenta {
     @Override
     public void actualizarSaldo() {
         if (this.getSaldo() > 1000) {
-            this.getSaldo() + (saldoMin * interes);
+            double actualizar = this.getSaldo() + (saldoMin * interes);
         } else {
-            this.getSaldo() + (this.getSaldo() + interes);
+            double actualizar = this.getSaldo() + (this.getSaldo() + interes);
         }
     }
 
