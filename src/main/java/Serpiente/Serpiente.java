@@ -19,10 +19,14 @@ public class Serpiente {
         int[][] serpiente = new int[7][7];
         rellenarMatriz(serpiente);
         mostrarMatriz(serpiente);
-        lista = primeraPosicion(serpiente);
+        System.out.println();
+        lista.add(primeraPosicion(serpiente));
         recorrerSerpiente(lista, serpiente, 0);
-        System.out.println("\n" + lista);
         mostrarMatriz(serpiente);
+        System.out.println();
+        for (Celda celda : lista) {
+            System.out.println("[" + celda.getX() + " = " + celda.getY() + "]");
+        }
     }
 
     private static void rellenarMatriz(int[][] matrix) {
@@ -53,49 +57,48 @@ public class Serpiente {
         }
     }
 
-    private static List<Celda> primeraPosicion(int[][] matrix) {
-        List<Celda> lista = new ArrayList();
-        boolean encontrado = false;
+    private static Celda primeraPosicion(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] == 1) {
-                    lista.add(new Celda(i, j));
                     matrix[i][j] = -1;
-                    encontrado = true;
-                    break;
+                    return new Celda(i, j);
                 }
             }
-            if (encontrado) {
-                break;
-            }
         }
-        return lista;
+        return new Celda(-1, -1);
     }
 
     private static void recorrerSerpiente(List<Celda> listaCelda, int[][] matrix,
             int posicion) {
         int pX = listaCelda.get(posicion).getX();
         int pY = listaCelda.get(posicion).getY();
-        if (posicion <= matrix[0].length) {
+        if (pX >= 0 && pX < matrix.length
+                && pY >= 0 && pY < matrix[0].length
+                && posicion < matrix[0].length) {
             if (matrix[pX - 1][pY] == 1) {// Arriba
                 listaCelda.add(new Celda(pX - 1, pY));
                 matrix[pX - 1][pY] = -1;
-                recorrerSerpiente(listaCelda, matrix, ++posicion);
+                posicion++;
+                recorrerSerpiente(listaCelda, matrix, posicion);
             }
             if (matrix[pX + 1][pY] == 1) {// Abajo
                 listaCelda.add(new Celda(pX + 1, pY));
                 matrix[pX + 1][pY] = -1;
-                recorrerSerpiente(listaCelda, matrix, ++posicion);
+                posicion++;
+                recorrerSerpiente(listaCelda, matrix, posicion);
             }
             if (matrix[pX][pY - 1] == 1) {// Izq
                 listaCelda.add(new Celda(pX, pY - 1));
                 matrix[pX][pY - 1] = -1;
-                recorrerSerpiente(listaCelda, matrix, ++posicion);
+                posicion++;
+                recorrerSerpiente(listaCelda, matrix, posicion);
             }
             if (matrix[pX][pY + 1] == 1) {// Der
                 listaCelda.add(new Celda(pX, pY + 1));
                 matrix[pX][pY + 1] = -1;
-                recorrerSerpiente(listaCelda, matrix, ++posicion);
+                posicion++;
+                recorrerSerpiente(listaCelda, matrix, posicion);
             }
         }
     }
