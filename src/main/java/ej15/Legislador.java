@@ -8,10 +8,16 @@ package ej15;
  *
  * @author edu
  */
-public abstract class Legislador {
+public abstract class Legislador extends Persona {
 
     private String provincia;
     private String patidoPolitico;
+
+    public Legislador(String provincia, String patidoPolitico, String nombre, String apellidos) {
+        super(nombre, apellidos);
+        this.provincia = provincia;
+        this.patidoPolitico = patidoPolitico;
+    }
 
     public Legislador(String provincia, String patidoPolitico) {
         this.provincia = provincia;
@@ -20,7 +26,13 @@ public abstract class Legislador {
 
     public Legislador() {
     }
-    
+
+    public static void legistador() {
+        System.out.println("Soy legislador");
+    }
+
+    public abstract void getCamara();
+
     public String getPatidoPolitico() {
         return patidoPolitico;
     }
@@ -40,7 +52,8 @@ public abstract class Legislador {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Provincia = ").append(provincia);
+        sb.append("Nombre = ").append(this.getNombre());
+        sb.append(", Provincia = ").append(provincia);
         sb.append(", Patido Político = ").append(patidoPolitico);
         return sb.toString();
     }
