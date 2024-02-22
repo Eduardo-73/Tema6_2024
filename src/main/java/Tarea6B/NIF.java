@@ -5,6 +5,7 @@
 package Tarea6B;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 /**
  *
@@ -12,30 +13,26 @@ import java.time.LocalDate;
  */
 public class NIF {
 
-    private long numero;
+    public static Random rd = new Random();
+
+    private String numero;
     private char letra;
     private LocalDate fechaCaducidad;
 
-    public NIF(long numero, char letra, LocalDate fechaCaducidad) {
-        this.numero = numero;
-        this.letra = letra;
-        this.fechaCaducidad = fechaCaducidad;
-    }
-
     public NIF() {
-    }
-
-    public static void nif(long num, LocalDate fechaCaducidad) {
-
+        this.numero = "" + rd.nextInt(11_111_111, 99_999_999);
+        this.letra = calcurarLetra();
+        this.fechaCaducidad = LocalDate.now().plusYears(10);
     }
 
     private static char calcurarLetra() {
         char letra = 0;
+        letra = (char) rd.nextInt(65, 90);
         return letra;
     }
 
-    public static void renovar(LocalDate fechaSolicitudRenovacion) {
-
+    public void renovar(LocalDate fechaSolicitudRenovacion) {
+        setFechaCaducidad(fechaSolicitudRenovacion.plusYears(10));
     }
 
     public LocalDate getFechaCaducidad() {
@@ -45,12 +42,12 @@ public class NIF {
     public void setFechaCaducidad(LocalDate fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
     }
-
-    public long getNumero() {
+    
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -70,5 +67,4 @@ public class NIF {
         sb.append(", Fecha Caducidad = ").append(fechaCaducidad);
         return sb.toString();
     }
-
 }

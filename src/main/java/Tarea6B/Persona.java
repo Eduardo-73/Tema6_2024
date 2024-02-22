@@ -23,13 +23,13 @@ public abstract class Persona {
     }
 
     public Persona() {
-        
+
     }
-    
-    public static void renovarNIF(LocalDate fechaSolicitud){
-        
+
+    public void renovarNIF(LocalDate fechaSolicitud) {
+        this.nif.renovar(fechaSolicitud);
     }
-    
+
     public String getApellido() {
         return apellido;
     }
@@ -49,7 +49,7 @@ public abstract class Persona {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Nombre = ").append(nombre);
+        sb.append(nombre);
         sb.append(", Apellido = ").append(apellido);
         return sb.toString();
     }

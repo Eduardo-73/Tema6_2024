@@ -10,9 +10,9 @@ package Tarea6B;
  */
 public enum Grupo {
     
-    C(17.5),
-    D(18),
-    E(18.5);
+    C(1.175),
+    D(1.18),
+    E(1.185);
 
     private double irpf;
 

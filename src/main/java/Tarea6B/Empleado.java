@@ -4,18 +4,22 @@
  */
 package Tarea6B;
 
+import java.util.Random;
+
 /**
  *
  * @author edu
  */
 public abstract class Empleado extends Persona {
 
+    public static Random rd = new Random();
+
     private String numeroSeguridadSocial;
     private double salario;
 
-    public Empleado(String numeroSeguridadSocial, double salario, String nombre, String apellido) {
-        super(nombre, apellido);
-        this.numeroSeguridadSocial = numeroSeguridadSocial;
+    public Empleado(double salario, String nombre, String apellido, NIF nif) {
+        super(nombre, apellido, nif);
+        this.numeroSeguridadSocial = "" + rd.nextInt(1_111, 9_999);
         this.salario = salario;
     }
 
@@ -43,7 +47,7 @@ public abstract class Empleado extends Persona {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Nombre = ").append(this.getNombre());
+        sb.append(this.getNombre());
         sb.append(", Nº Seguridad Social = ").append(numeroSeguridadSocial);
         sb.append(", Salario = ").append(salario);
         return sb.toString();
